@@ -1,0 +1,9 @@
+vim door_1.conf
+j
+j
+w
+w
+d$
+A
+OPEN
+:wq
