@@ -1,7 +1,7 @@
-#ifndef DATA_IO_H
-#define DATA_IO_H
+#ifndef SRC_DATA_LIBS_DATA_IO_H_
+#define SRC_DATA_LIBS_DATA_IO_H_
 
-void input(double *data, int n);
-void output(double *data, int n);
+double* input(int *size);
+void output(const double *arr, int size);
 
-#endif
+#endif  // SRC_DATA_LIBS_DATA_IO_H_
