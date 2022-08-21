@@ -1,18 +1,10 @@
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
-QUEST = ../build/Quest_
+all: build
 
-print_module:
-	$(CC) $(CFLAGS) print_module.c main_module_entry_point.c documentation_module.c -o $(QUEST)1
+clean:
+	rm ../build/*
 
-documentation_module:
-	$(CC) $(CFLAGS) main_module_entry_point.c print_module.c documentation_module.c -o $(QUEST)2
+build:
+	gcc -Wall -Wextra -Werror graph.c structs.c polish_notation.c parse.c draw.c -o ../build/graph
 
-bst_create_test:
-	$(CC) $(CFLAGS) bst.c bst_create_test.c -o $(QUEST)3
-
-bst_insert_test:
-	$(CC) $(CFLAGS) bst.c bst_insert_test.c -o $(QUEST)4
-
-bst_traverse_test:
-	$(CC) $(CFLAGS) bst.c bst_traverse_test.c -o $(QUEST)5
+run: build
+	leaks --quiet --atExit -- ./../build/graph
