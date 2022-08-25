@@ -1,13 +1,9 @@
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+all:
+	gcc modules.c modules_db.c input_utils.c array_utils.c shared.c levels.c status_events.c -Wall -Wextra -Werror -o ../build/modules_db
 
-.PHONY: state_sort state_search clear_state
+test:
+	cppcheck --enable=all --suppress=missingIncludeSystem ../src/
+	python3 cpplint.py *.[ch]
 
-state_sort:
-	$(CC) $(CFLAGS) state_sort.c -o ../build/Quest_1
-
-state_search:
-	$(CC) $(CFLAGS) state_search.c -o ../build/Quest_2
-
-clear_state:
-	$(CC) $(CFLAGS) clear_state.c -o ../build/Quest_3
+run: all
+	leaks --quiet --atExit -- ./../build/modules_db
